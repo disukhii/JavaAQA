@@ -4,6 +4,7 @@ import Selenium.opencart.po.AddToCartPO;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import Selenium.Driver;
+import org.testng.Assert;
 
 public class AddToCartBO {
 
@@ -17,7 +18,9 @@ public class AddToCartBO {
         addToCartPO.addToCartButton();
         addToCartPO.openCart();
         addToCartPO.viewCartButton();
-        addToCartPO.cartPage();
+        Assert.assertEquals(addToCartPO.cartPage(), "Shopping Cart\n" +
+                "                 (0.00kg)\n" +
+                "         ");
         return true;
     }
 

@@ -11,6 +11,5 @@ public class addToCart extends BaseTest{
         String qty= (String) new PropertyUtil().getProperty("qty");
 
         Assert.assertTrue(addToCartBO.cart(qty));
-        // add assert for text !!!
     }
 }
