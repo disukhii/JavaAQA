@@ -1,0 +1,24 @@
+package Selenium.opencart.bo;
+
+import Selenium.opencart.po.AddToCartPO;
+import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
+import Selenium.Driver;
+
+public class AddToCartBO {
+
+    @Step
+    public boolean cart(String qty) {
+        WebDriver driver = Driver.getInstance().getDriver();
+        driver.get("http://localhost/index.php?route=common/home");
+        AddToCartPO addToCartPO = new AddToCartPO(driver);
+        addToCartPO.selectMacBook();
+        addToCartPO.inputQty(qty);
+        addToCartPO.addToCartButton();
+        addToCartPO.openCart();
+        addToCartPO.viewCartButton();
+        addToCartPO.cartPage();
+        return true;
+    }
+
+}

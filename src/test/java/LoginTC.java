@@ -11,12 +11,10 @@ public class LoginTC extends BaseTest {
     public void loginTest() {
         LoginBO loginBO = new LoginBO();
         String login= (String) new PropertyUtil().getProperty("login");
-        String pass= (String) new PropertyUtil().getProperty("pass");;
+        String pass= (String) new PropertyUtil().getProperty("pass");
 
         Assert.assertTrue(loginBO.login(login,pass));
         Assert.assertEquals(loginBO, "My Account");
     }
-
-
 
 }
