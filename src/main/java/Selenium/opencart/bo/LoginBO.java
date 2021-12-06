@@ -10,11 +10,14 @@ public class LoginBO {
     @Step
     public boolean login(String login, String pass) {
         WebDriver driver = Driver.getInstance().getDriver();
-        driver.get("https://www.instagram.com/");
+        driver.get("http://localhost/index.php?route=common/home");
         LoginPO loginPO= new LoginPO(driver);
-        loginPO.inputLogin(login);
+        loginPO.selectMyAccount();
+        loginPO.selectLogin();
+        loginPO.inputEmail(login);
         loginPO.inputPassword(pass);
         loginPO.submit();
+        loginPO.myAccountPage();
         return true;
     }
 }
