@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import Selenium.Driver;
 import Selenium.opencart.po.LoginPO;
+import org.testng.Assert;
 
 public class LoginBO {
 
@@ -17,7 +18,7 @@ public class LoginBO {
         loginPO.inputEmail(login);
         loginPO.inputPassword(pass);
         loginPO.submit();
-        loginPO.myAccountPage();
+        Assert.assertEquals(loginPO.myAccountPage(), "My Account");
         return true;
     }
 }

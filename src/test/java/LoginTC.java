@@ -14,7 +14,6 @@ public class LoginTC extends BaseTest {
         String pass= (String) new PropertyUtil().getProperty("pass");
 
         Assert.assertTrue(loginBO.login(login,pass));
-        Assert.assertEquals(loginBO, "My Account");
     }
 
 }
