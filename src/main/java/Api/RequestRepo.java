@@ -13,20 +13,20 @@ public class RequestRepo {
         return request;
     }
 
-    public static Request postAmazonCem() {
+    public static Request postAmazonCem(String path) {
         Request request=new Request();
         request.setProtocol("http");
         request.setHost("aan.amazon.com");
-        request.setPath("/cem");
+        request.setPath(path);
         request.setMethod("POST");
         request.setBody("{\"render_id\":\"219ff8e3-4df0-42f3-9ff8-e34df082f3f7\",\"event_type\":\"impression\",\"dimensions\":{\"subtype\":\"impression\",\"value\":1,\"template_name\":\"Dynamic eCommerce_SD_CI_US_DESKTOP\",\"template_major_version\":\"0\"}}");
         return request;
     }
-    public static Request headSuggestions() {
+    public static Request headSuggestions(String path) {
         Request request=new Request();
         request.setProtocol("http");
         request.setHost("completion.amazon.com");
-        request.setPath("/api/2017/suggestions");
+        request.setPath(path);
         request.setMethod("HEAD");
         return request;
     }

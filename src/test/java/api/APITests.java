@@ -24,27 +24,27 @@ public class APITests extends BaseTCApi{
         //validate
         Assert.assertEquals(response.getStatusCode().intValue(),statusCode,"invalid code");
     }
-    @Test
-    public void amazonCem(){
+    @Test(dataProvider = "amazonCemStatusPath")
+    public void amazonCem(String path, int statusCode){
         // prepare
-        Request request = RequestRepo.postAmazonCem();
+        Request request = RequestRepo.postAmazonCem(path);
 
         //execute
         Response response=new Client().send(request);
 
         //validate
-        Assert.assertEquals(response.getStatusCode().intValue(),200,"invalid code");
+        Assert.assertEquals(response.getStatusCode().intValue(),statusCode,"invalid code");
     }
-    @Test
-    public void amazonSuggestions(){
+    @Test(dataProvider = "amazonSuggestionsStatusPath")
+    public void amazonSuggestions(String path, int statusCode){
         // prepare
-        Request request = RequestRepo.headSuggestions();
+        Request request = RequestRepo.headSuggestions(path);
 
         //execute
         Response response=new Client().send(request);
 
         //validate
-        Assert.assertEquals(response.getStatusCode().intValue(),204,"invalid code");
+        Assert.assertEquals(response.getStatusCode().intValue(),statusCode,"invalid code");
     }
     @Test
     public void amazonPageNotFound(){
