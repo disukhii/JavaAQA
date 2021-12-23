@@ -1,53 +1,28 @@
 package api;
 
-import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.specification.ResponseSpecification;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import Api.Client;
 import Api.Request;
 import Api.RequestRepo;
 import Api.Response;
+import Base.BaseTCApi;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasSize;
 
-public class APITests {
+public class APITests extends BaseTCApi{
 
-    ResponseSpecification checkStatusCodeAndContentType =
-            new ResponseSpecBuilder().
-                    expectStatusCode(200).
-                    expectContentType(ContentType.JSON).
-                    build();
-
-    @Test
-    public void Home(){
-
-        //prepare
-        given()
-
-                //execute
-                .when().
-                get("http://localhost/catalog/view/javascript/common.js").
-
-                //validate
-                        then().
-                assertThat()
-                .and()
-                .spec(checkStatusCodeAndContentType);
-    }
-
-    @Test
-    public void amazonMainPage(){
+    @Test(dataProvider = "opencartStatusPath")
+    public void opencartMainPage(String path, int statusCode){
         // prepare
-        Request request = RequestRepo.getMainPage();
+        Request request = RequestRepo.getMainPage(path);
 
         //execute
         Response response=new Client().send(request);
 
         //validate
-        Assert.assertEquals(response.getStatusCode().intValue(),200,"invalid code");
+        Assert.assertEquals(response.getStatusCode().intValue(),statusCode,"invalid code");
     }
     @Test
     public void amazonCem(){

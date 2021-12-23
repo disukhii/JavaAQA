@@ -4,11 +4,11 @@ import Api.Request;
 
 public class RequestRepo {
 
-    public static Request getMainPage() {
+    public static Request getMainPage(String path) {
         Request request=new Request();
         request.setProtocol("http");
         request.setHost("localhost");
-        request.setPath("/");
+        request.setPath(path);
         request.setMethod("GET");
         return request;
     }
@@ -47,29 +47,5 @@ public class RequestRepo {
         request.setMethod("GET");
         return request;
     }
-/*
-    public static Request createTrelloBoard(String boardName) {
-        Request request=baseTrelloRequest();
-        request.setPath("1/boards/?name="+boardName+"&key="+KEY +
-                "&token="+TOKEN);
-        request.setMethod("POST");
-        request.setBody("{\"defaultLists\":false,\"name\":\"test_board1\",\"prefs_permissionLevel\"" +
-                ":\"org\",\"prefs_selfJoin\":true,\"idOrganization\":\"60fefe65beb2b76caa04761c\"}");
-        return request;
-    }
 
-    private static Request baseTrelloRequest() {
-        Request request=new Request();
-        request.setProtocol("https");
-        request.setHost("api.trello.com");
-        return request;
-    }
-
-    public static Request deleteTrelloBoard(String boardId) {
-        Request request=baseTrelloRequest();
-        request.setPath("1/boards/"+boardId+"?key="+KEY +
-                "&token="+TOKEN);
-        request.setMethod("DELETE");
-        return request;
-    }*/
 }

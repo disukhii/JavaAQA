@@ -1,13 +1,16 @@
+import Selenium.parallel_run.BrowserFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import Selenium.opencart.bo.EditAccountBO;
 import Selenium.opencart.bo.LoginBO;
 import test_helper.BaseTest;
 import PropertyUtil.PropertyUtil;
+import Base.BaseTCDriver;
 
-public class EditAccount extends BaseTest{
-    @Test
-    public void editAccount() {
+public class EditAccount extends BaseTCDriver{
+    @Test(dataProvider = "browserDataProvider")
+    public void editAccount(String nameBrowser) {
+        BrowserFactory.initDriver(nameBrowser);
         LoginBO loginBO = new LoginBO();
         EditAccountBO editAccountBO = new EditAccountBO();
         String login= (String) new PropertyUtil().getProperty("login");
